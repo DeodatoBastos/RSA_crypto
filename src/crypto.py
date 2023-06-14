@@ -32,38 +32,24 @@ def compute_private_exponent(e: int, n: int) -> int:
         n: modulus value
 
     Returns:
-        d: inverse of e modulus n
+        t: inverse of e modulus n
     """
 
-    d: int
-    d, _ = extended_euclidean_algorithm(e, n)
+    t: int = 0
+    new_t: int = 1
+    r: int = n
+    new_r: int = e
 
-    return d
+    while new_r != 0:
+        quotient: int = r // new_r
 
+        t, new_t = new_t, t - quotient * new_t
+        r, new_r = new_r, r - quotient * new_r
 
-def extended_euclidean_algorithm(a: int, b: int) -> Tuple[int, int]:
-    """
-        Calculate the coefficients of a and b in Extended Euclidean Algorithm,
-        i.e., a * x + b * y = gcd(a, b)
-    Args:
-        a: int value
-        b: int value
+    if t < 0:
+        t += n
 
-    Returns:
-        return a Tuple with the coefficients of a and b, i.e., (x, y).
-    """
-
-    if b == 0:
-        return 1, 0
-    else:
-        q: int
-        r: int
-        s: int
-        t: int
-
-        q, r = divmod(a, b)
-        s, t = extended_euclidean_algorithm(b, r)
-        return t, s - q * t
+    return t
 
 
 def generate_keypair() -> Tuple[Tuple[int, int], Tuple[int, int]]:
