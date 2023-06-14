@@ -60,8 +60,8 @@ def generate_keypair() -> Tuple[Tuple[int, int], Tuple[int, int]]:
        return a Tuple of (public_key, private_key)
     """
 
-    a: int = 6
-    b: int = 9
+    a: int = 15
+    b: int = 20
 
     p: int = generate_prime_number(a, b)
     q: int = generate_prime_number(a, b)

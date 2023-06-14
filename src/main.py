@@ -1,4 +1,5 @@
 from typing import Dict, List
+from sys import stdout
 
 from crypto import Tuple, generate_keypair, encrypt, decrypt
 
@@ -35,4 +36,15 @@ if __name__ == "__main__":
 
     second_public_key, second_private_key = generate_keypair()
     second_decrypted_plaintext: int = decrypt(second_private_key, ciphertext)
+    i: int = 1
+
+    while second_decrypted_plaintext != decrypted_plaintext and i < 100_000:
+        stdout.write("\rTrial number %i to crack the ciphertext" % i)
+        stdout.flush()
+        second_public_key, second_private_key = generate_keypair()
+        second_decrypted_plaintext: int = decrypt(second_private_key, ciphertext)
+        i += 1
+
     print("Decrypted plaintext with other private key: ", second_decrypted_plaintext)
+    print("Number of trials: ", i)
+    print("Public key: ", second_public_key, "\nPrivate Key: ", second_private_key)
