@@ -1,8 +1,7 @@
-from typing import Dict, List
+from typing import Dict, List, Tuple
 from sys import stdout
 
-from crypto import Tuple, generate_keypair, encrypt, decrypt
-
+from crypto import message_codification, generate_keypair, encrypt, decrypt
 
 if __name__ == "__main__":
     MESSAGE: str = "NAO SOU NADA. NUNCA SEREI NADA. NAO POSSO QUERER SER NADA. A " + \
@@ -10,13 +9,7 @@ if __name__ == "__main__":
               "VENCIDO COMO SE SOUBESSE A VERDADE. ESTOU HOJE PERPPLEXO COMO " + \
               "QUEM PENSOU E ACHOU E ESQUECEU."
 
-    DICTIONARY: Dict[str, int] = {"A": 10, "B": 11, "C": 12, "D": 13, "E": 14, "F": 15, "G": 16, "H": 17,
-                                  "I": 18, "J": 19, "K": 20, "L": 21, "M": 22, "N": 23, "O": 24, "P": 25,
-                                  "Q": 26, "R": 27, "S": 28, "T": 29, "U": 30, "V": 31, "X": 32, "W": 33,
-                                  "Y": 34, "Z": 35, " ": 36, ".": 37}
-
-    letters: List[str] = list(MESSAGE)
-    plaintext: int = sum([DICTIONARY[letter] for letter in letters])
+    plaintext: int = message_codification(message)
 
     public_key: Tuple[int, int]
     private_key: Tuple[int, int]

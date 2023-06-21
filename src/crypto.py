@@ -1,18 +1,30 @@
 from math import gcd
 from random import randint
+from typing import Tuple
 
 from utils import fast_exp_mod
-from primes import Tuple, generate_prime_number
+from primes import generate_prime_number
+
+def message_codification(message: str) -> int:
+    DICTIONARY: Dict[str, int] = {"A": 10, "B": 11, "C": 12, "D": 13, "E": 14, "F": 15, "G": 16, "H": 17,
+                                  "I": 18, "J": 19, "K": 20, "L": 21, "M": 22, "N": 23, "O": 24, "P": 25,
+                                  "Q": 26, "R": 27, "S": 28, "T": 29, "U": 30, "V": 31, "X": 32, "W": 33,
+                                  "Y": 34, "Z": 35, " ": 36, ".": 37}
+
+    letters: List[str] = list(message)
+    plaintext: int = sum([DICTIONARY[letter] for letter in letters])
+
+    return plaintext
 
 
 def choose_public_exponent(n: int) -> int:
     """
-        Generate an integer which is inversible modulus phi_n
+        Generate an integer which is invertible modulus phi_n
     Args:
         n: the modulus value
 
     Returns:
-        e: inversible integer modulus phi_n
+        e: invertible integer modulus phi_n
     """
 
     e: int = randint(2, n)
@@ -79,7 +91,7 @@ def encrypt(public_key: Tuple[int, int], plaintext: int) -> int:
     """
         Encrypt the message in plaintext
     Args:
-        public_key: public key used in encryptation
+        public_key: public key used in encryption
         plaintext: message to be encrypted
 
     Returns:
@@ -97,7 +109,7 @@ def decrypt(private_key: Tuple[int, int], ciphertext: int) -> int:
     """
         Decrypt the message in ciphertext
     Args:
-        private_key: private key used in decryptation
+        private_key: private key used in decryption
         ciphertext: message to be decrypted
 
     Returns:
