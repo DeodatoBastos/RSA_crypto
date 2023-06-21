@@ -9,7 +9,7 @@ if __name__ == "__main__":
               "VENCIDO COMO SE SOUBESSE A VERDADE. ESTOU HOJE PERPPLEXO COMO " + \
               "QUEM PENSOU E ACHOU E ESQUECEU."
 
-    plaintext: int = message_codification(message)
+    plaintext: int = message_codification(MESSAGE)
 
     public_key: Tuple[int, int]
     private_key: Tuple[int, int]
@@ -38,6 +38,6 @@ if __name__ == "__main__":
         second_decrypted_plaintext: int = decrypt(second_private_key, ciphertext)
         i += 1
 
-    print("Decrypted plaintext with other private key: ", second_decrypted_plaintext)
+    print("\nDecrypted plaintext with other private key: ", second_decrypted_plaintext)
     print("Number of trials: ", i)
     print("Public key: ", second_public_key, "\nPrivate Key: ", second_private_key)
