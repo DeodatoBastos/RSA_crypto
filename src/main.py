@@ -1,4 +1,4 @@
-from typing import Dict, List, Tuple
+from typing import Tuple
 from sys import stdout
 
 from crypto import message_codification, generate_keypair, encrypt, decrypt

@@ -1,9 +1,10 @@
 from math import gcd
 from random import randint
-from typing import Tuple
+from typing import Tuple, List, Dict
 
 from utils import fast_exp_mod
 from primes import generate_prime_number
+
 
 def message_codification(message: str) -> int:
     DICTIONARY: Dict[str, int] = {"A": 10, "B": 11, "C": 12, "D": 13, "E": 14, "F": 15, "G": 16, "H": 17,
